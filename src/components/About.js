@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import userImage from "../assets/suraj3.jpg"
+import userImage from "../assets/suraj.jpg"
 import { FaDownload } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 

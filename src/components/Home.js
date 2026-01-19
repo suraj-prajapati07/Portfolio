@@ -1,6 +1,6 @@
 import React from 'react'
 import {ReactTyped } from "react-typed";
-import userImage from "../assets/suraj3.jpg"
+import userImage from "../assets/suraj.jpg"
 
 import circle from "../assets/anemyIcon/circle.png";
 import cube from "../assets/anemyIcon/cube.png";
