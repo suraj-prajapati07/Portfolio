@@ -90,11 +90,11 @@ const About = () => {
                 <img
                     src={userImage}
                     alt='userImage'
-                    
-                    className='aspect-square shadow-xl rounded-md blur-[2px]'
+                    className='shadow-xl rounded-md'
                 />
                 <div className='bg-white flex items-center  absolute -bottom-10 left-[50%] 
-                -translate-x-[50%] text-purple-700 px-4 py-2 md:px-6 md:py-3 max-w-72 z-50 text-center rounded-[4px] shadow-2xl drop-shadow-2xl shadow-white '>
+                -translate-x-[50%] text-purple-700 px-4 py-2 md:px-6 md:py-3 max-w-72 z-50 text-center rounded-[4px] shadow-2xl drop-shadow-2xl shadow-white '
+                >
                     <a target='_blank' href='#' className='px-2 py-3 md:px-3 md:py-4 hover:bg-purple-600 hover:text-white transition-all duration-200 rounded-md'>
                         <FaFacebook
                             fontSize={24}
@@ -173,7 +173,7 @@ const About = () => {
                                     >
                                         My Projects
                                     </Link>
-                                    <a target='_blank' href='https://drive.google.com/file/d/1RkXhK4LOPWXmZmAarOD7rf-ysezyeTCG/view?usp=drive_link'
+                                    <a target='_blank' href='https://drive.google.com/file/d/1UcUCR_odhmVjXYt6Zci6R0VSz1jgkzzM/view'
                                         className='font-bold px-4 md:px-6 py-2 md:py-3 border bg-white rounded-md flex items-center gap-2 hover:text-purple-500 hover:border-purple-500 transition-all duration-200 text-sm md:text-[17px]'
                                     >
                                         <FaDownload/>
@@ -226,6 +226,7 @@ const About = () => {
                                 </div>
                             </div>
                         ) :(
+                            false &&
                             //default experience..
                             <div className='flex flex-col gap-y-6'>
                                 {

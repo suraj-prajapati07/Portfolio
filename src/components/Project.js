@@ -1,9 +1,9 @@
 import React from 'react'
 //project image
-import project1 from "../assets/projects/Project1.png";
-import project2 from "../assets/projects/Project2.png";
-import project3 from "../assets/projects/Project3.png";
-import project4 from "../assets/projects/Project4.png";
+import project1 from "../assets/projects/Proj1.png";
+import project2 from "../assets/projects/Proj2.png";
+import project3 from "../assets/projects/Proj3.png";
+import project4 from "../assets/projects/Proj4.png";
 
 //project tech stack
 import html from "../assets/stack/HTML.png";
@@ -11,7 +11,9 @@ import css from "../assets/stack/CSS.png";
 import tailwindCSS from "../assets/stack/Tailwind.png";
 import javaScript from "../assets/stack/Javascript.svg";
 import react from "../assets/stack/React.png";
+import redux from "../assets/stack/Redux.svg";
 import node from "../assets/stack/NodeJs.svg";
+import express from "../assets/stack/Express.png"
 import next from "../assets/stack/NextJsCircle.png";
 import mongoDB from "../assets/stack/MongoDB.svg";
 
@@ -24,30 +26,38 @@ const projectData = [
   {
     id: 1,
     image: project1,
-    techStack: [html,react,tailwindCSS,javaScript],
-    heading: "Tint & Orange",
-    description: "Its is a car modification copany which provide you sheets to protect your car from scratch"
+    techStack: [html, tailwindCSS, react, redux, node, express, mongoDB],
+    heading: "StudyNotion-EdTech",
+    description: "A full-featured EdTech platform designed for course creation, learning management, secure user authentication, and online payments.",
+    githubLink: "https://github.com/suraj-prajapati07/StudyNotion",
+    liveLink: "https://study-notion-nine-roan.vercel.app",
   },
   {
     id: 2,
     image: project2,
-    techStack: [html,react,tailwindCSS,javaScript],
-    heading: "Breaking Copyrights",
-    description: "A platform to download copyrights free youtube music"
+    techStack: [html, tailwindCSS, react, redux],
+    heading: "Shopping App",
+    description: "A fully functional shopping application where users can add products to the cart, remove them, and view a real-time cart summary.",
+    githubLink: "https://github.com/suraj-prajapati07/Shopping-App",
+    liveLink: "https://shopping-app-indol-two.vercel.app",
   },
   {
     id: 3,
     image: project3,
-    techStack: [html,react,tailwindCSS,javaScript],
-    heading: "Isha Tattva",
-    description: "A Website for interior designer to showcase her works and samples"
+    techStack: [html, css, tailwindCSS, javaScript],
+    heading: "Password Generator",
+    description: "A secure web application that instantly generates strong, random passwords with customizable length and complexity.",
+    githubLink: "https://github.com/suraj-prajapati07/Password-Generator",
+    liveLink: "https://password-generator-ecru.vercel.app",
   },
   {
     id: 4,
     image: project4,
-    techStack: [html,react,tailwindCSS,javaScript],
-    heading: "Granit",
-    description: "A architectural website to plan your building or home (Hebrew Language)"
+    techStack: [html, css, tailwindCSS],
+    heading: "Razorpay UI-Clone",
+    description: "Frontend Razorpay clone showcasing responsive layout and Tailwind CSS styling.",
+    githubLink: "https://github.com/suraj-prajapati07/RazorpayUI-Clone",
+    liveLink: "https://razorpay-ui-clone-murex.vercel.app",
   },
 
 ]
@@ -82,9 +92,9 @@ const Project = () => {
                   />
 
                   {/* Overlap elements */}
-                  <div className="text-gray-50 z-50 absolute bottom-1  sm:bottom-[20%] flex flex-col gap-2 sm:gap-4 lg:gap-6 p-2 sm:p-[2rem] sm:left-[10%]">
+                  <div className="text-gray-50 z-50 absolute md:bottom-4 lg:bottom-8 bottom-2 flex flex-col gap-2 sm:gap-4 lg:gap-6 p-2 sm:p-[2rem] sm:left-[10%]">
                     {/* icon */}
-                    <div className='sm:w-[60%] flex flex-row items-center flex-wrap gap-2 sm:gap-3'>
+                    <div className='w-full flex flex-row items-center flex-wrap gap-2 sm:gap-3'>
                       {
                         project.techStack?.map((icon, index) => {
                           return(
@@ -113,11 +123,11 @@ const Project = () => {
                         >
                           Read More
                         </button>
-                        <a href='#'>
+                        <a href={project.githubLink} target='_blank'>
                           <FaGithub  className=' hover:text-purple-600 md:text-3xl text-xl
                           transition-all duration-300'/>
                         </a>
-                        <a href='#'>
+                        <a href={project.liveLink} target='_blank'>
                           <FaLink  className=' hover:text-purple-600 md:text-3xl text-xl 
                           transition-all duration-300'/>
                         </a>

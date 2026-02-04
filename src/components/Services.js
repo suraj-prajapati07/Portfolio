@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from "framer-motion";
-import { LuRotate3D } from "react-icons/lu";
+// import { LuRotate3D } from "react-icons/lu";
 import { FaRotate } from "react-icons/fa6";
 
 // import { GiThink } from "react-icons/gi";
@@ -57,7 +57,7 @@ const serviceData = [
 ]
 
 const Services = () => {
-  const [isFliped, setIsFliped] = useState(false);
+  const [isFliped, setIsFliped] = useState(null);
 
 
   return (
@@ -85,9 +85,11 @@ const Services = () => {
                 >
                   {/* Flip Container */}
                   <div
-                    className={`relative w-full h-full transition-transform duration-700 
-                    [transform-style:preserve-3d] md:hover:[transform:rotateY(180deg)]
-                    ${isFliped ? "[transform:rotateY(180deg)]" : ""}`}
+                    className={`relative w-full h-full transition-transform duration-700
+                      [transform-style:preserve-3d] md:hover:[transform:rotateY(150deg)]
+                      ${isFliped === service.id? 
+                      "[transform:rotateY(180deg)]": "[transform:rotateY(0deg)]"}`
+                    }
                   >
                     {/* Front side */}
                     <div className="bg-white absolute inset-0 flex flex-col items-center justify-center gap-4 shadow-lg rounded-2xl border [backface-visibility:hidden]">
@@ -110,8 +112,11 @@ const Services = () => {
 
                     {/* rotate card for mobile view */}
                     <button 
-                      onClick={() => setIsFliped(!isFliped)}
-                      className={`md:hidden w-9 h-9 rounded-full bg-[#dfbdfd80] grid place-items-center absolute top-2 right-2 text-xl  ${isFliped? "text-gray-100" : "text-gray-950"}`}
+                      onClick={(e) => {
+                        e.stopPropagation(); // prevents unwanted bubbling
+                        setIsFliped(prev => prev === service.id? null : service.id)
+                      }}
+                      className={`md:hidden w-9 h-9 rounded-full bg-[#dfbdfd80] grid place-items-center absolute top-2 right-2 text-xl`}
                     >
                       <FaRotate/>
                     </button>

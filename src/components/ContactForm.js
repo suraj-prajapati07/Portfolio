@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import { TbSend } from "react-icons/tb";
+import emailjs from "@emailjs/browser";
+import toast from 'react-hot-toast';
+import { FaHourglassEnd } from "react-icons/fa";
 
 const ContactForm = () => {
 
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    console.log("Puvlic key : ", publicKey)
+    const[loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -18,16 +26,39 @@ const ContactForm = () => {
             }
         })
     }
-    function submitHandler(e){
+    async function submitHandler(e){
         e.preventDefault();
-        console.log("Form Data : ",formData);
-        //reset fields
-        setFormData({name:"",email: "", subject: "", message: ""});
+        setLoading(true);
+        // console.log("Form Data : ",formData);
+        //send mail
+        try{
+            const result = await emailjs.send(
+                serviceId,
+                templateId,
+                formData,
+                publicKey
+            )
+            console.log("Email sent:", result);
+            toast.success("Message sent successfully ✅");
+
+            //reset fields
+            setFormData({name:"",email: "", subject: "", message: ""});
+        }
+        catch(error){
+            console.error("Email error:", error);
+            toast.error("Failed to send message ❌");
+        }
+        finally{
+            setLoading(false);
+        }
     }
 
   return (
     <div className='lg:w-2/3 lg:mx-auto w-full relative'>
-        <form  onSubmit={submitHandler} className='flex flex-col'>
+        <form  
+            onSubmit={submitHandler} 
+            className='flex flex-col'
+        >
             <div className='relative flex flex-col gap-8'>
                 <div className='flex flex-col gap-4'>
                     <input 
@@ -75,13 +106,14 @@ const ContactForm = () => {
                 </div> 
             </div>
 
-            <button 
+            <button
+                disabled={loading}
                 type="submit"
                 className='px-4 py-2 bg-[#9929fb] rounded-[4px] text-white font-semibold md:text-[20px] my-6
                 relative read-btn z-10 hover:text-gray-900 hover:scale-[0.9] transition-transform duration-300 border-2 border-purple-700 self-center flex items-center gap-2'
             >
                 Send Message
-                <TbSend/>
+                {loading?  <FaHourglassEnd className='animate-spin' /> : <TbSend/>}
             </button>
         </form>
     </div>

@@ -52,13 +52,13 @@ const Home = () => {
                     </button>
                 </div>
                 {/* Right section */}
-                <div className='relative  flex  justify-center'>
+                <div className='relative  flex  justify-center items-center'>
                     <img
                         src={userImage}
                         alt='userImage'
                         width={490}
                         height={390}
-                        className='user-image aspect-square'
+                        className='user-image'
                     />
                     {/* -------------------------------- */}
                     <div className="icon-dots absolute">
